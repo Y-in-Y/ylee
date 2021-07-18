@@ -13,12 +13,24 @@ void	builtin_cd(t_all *a)
 	run_export("OLDPWD", pwd);
 	if (!a->arg[1])
 	{
-		chdir("/Users/ylee");
-		run_export("PWD", "/Users/ylee");
+		t_env *tmp = g_env_list;
+		while (tmp)
+		{
+			if (ft_strncmp(tmp->name, "HOME", 5) == 1)
+			{
+				pwd = tmp->value;
+				break ;
+			}
+			tmp = tmp->next;	
+		}
+		chdir(pwd);
+		pwd = getcwd(NULL, 0);
+		run_export("PWD", pwd);
 	}
 	else
 	{
 		chdir(a->arg[1]);
-		run_export("PWD", a->arg[1]);
+		pwd = getcwd(NULL, 0);
+		run_export("PWD", pwd);
 	}
 }

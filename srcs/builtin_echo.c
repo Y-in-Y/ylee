@@ -18,6 +18,8 @@ void	builtin_echo(t_all *a)
 	while (a->arg[i])
 	{
 		printf("%s", a->arg[i]);
+		if (a->arg[i + 1])
+			printf(" ");
 		i++;
 	}
 	if (n_op == 0)
