@@ -27,11 +27,12 @@ static size_t	ft_cnt(int *s, int c, int strlen)
 			i++;
 		else
 		{
-			while (i <= strlen && tmp[i] != c)
+			while (i < strlen && tmp[i] != c)
 				i++;
 			cnt++;
 		}
 	}
+	printf("ft_cnt cnt is %ld\n", cnt);
 	return (cnt);
 }
 
@@ -55,10 +56,13 @@ static size_t	ft_index(size_t i, int *s, int c, int strlen)
 	size_t	cnt;
 
 	cnt = 0;
-	while (s[i] != c && (int)i < strlen)
+	while ((int)i < strlen && s[i] != c)
 	{
+		printf("cur i : %ld and s[%ld]:%d\n", i, i, s[i]);
 		i++;
 		cnt++;
+		if ((int)i < strlen)
+			printf("next i : %ld and s[%ld]:%d\n", i, i, s[i]);
 	}
 	return (cnt);
 }
@@ -76,7 +80,7 @@ static int		ft_fill(int *int_line, char const *s, int c, char **all, int strlen)
 	/* 무슨 문장 들어왔나 체크용 */
 	printf("command line : %s\n",s);
 	/* 여기까지 */
-	while ((int)i <= strlen)
+	while ((int)i < strlen)
 	{
 		while (int_line[i] == c && (int)i < strlen)
 			i++;
@@ -188,7 +192,7 @@ void		check_arguments(t_all *a)
 			// printf("%d %s\n",b->redir_list->redir_flag, b->redir_list->file);
 			while (b->redir_list)
 			{
-				printf("%d %s\n",b->redir_list->redir_flag, b->redir_list->file);
+				printf("redir : %d %s\n",b->redir_list->redir_flag, b->redir_list->file);
 				b->redir_list = b->redir_list->next;
 			}
 			k++;

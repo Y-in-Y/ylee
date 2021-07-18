@@ -31,10 +31,11 @@ void	free_struct(t_all *a)
 	free(a->int_line_cut);
 	free(a->arg);
 	free(a->redir_list);
-	free(a->next->int_line_cut);
-	free(a->next->arg);
-	free(a->next->redir_list);
-	free(a->next);
+	if (a->next)
+	{
+		free_struct(a->next);
+		free(a->next);
+	}
 }
 
 void	minishell(void)
@@ -50,15 +51,26 @@ void	minishell(void)
 	{
 		printf("stdin line is |%s|\n", line);
 		parsing(line, &a); // line parsing and add data to a struct
+		printf("parsing is end. here is minishell func.\n");
 		printf("struct a init?\n");
-		printf("a->cmd : %s, b->cmd : %s\n", a.cmd, (a.next)->cmd);
-		if (builtin_cmd_check(&a) == 0) // cmd is builtin cmd : return  1, is not : return 0
+		t_all *tmp;
+		tmp = &a;
+		while (tmp)
 		{
+			printf("cmd : %s  ", tmp->cmd);
+			tmp = tmp->next;
+		}
+		printf("\n");
+		int check;
+		if ((check = builtin_cmd_check(&a)) == 0) // cmd is builtin cmd : return  1, is not : return 0
+		{
+			printf("builtin_cmd_check : %d\n", check);
 			if (a.pipe_cnt == 0)
 				run_execve_cmd(&a); // no pipe and cmd is not builtin -> use execve to run cmd
 			else
 				multipipe(&a); // when 1 more pipe
 		}
+		printf("builtin_cmd_check : %d\n", check);
 		if (line && line[0])
 			add_history(line);
 //		printf("this process is %d\n", getpid());
