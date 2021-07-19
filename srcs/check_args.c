@@ -32,7 +32,7 @@ static size_t	ft_cnt(int *s, int c, int strlen)
 			cnt++;
 		}
 	}
-	printf("ft_cnt cnt is %ld\n", cnt);
+//	printf("ft_cnt cnt is %ld\n", cnt);
 	return (cnt);
 }
 
@@ -58,11 +58,11 @@ static size_t	ft_index(size_t i, int *s, int c, int strlen)
 	cnt = 0;
 	while ((int)i < strlen && s[i] != c)
 	{
-		printf("cur i : %ld and s[%ld]:%d\n", i, i, s[i]);
+//		printf("cur i : %ld and s[%ld]:%d\n", i, i, s[i]);
 		i++;
 		cnt++;
-		if ((int)i < strlen)
-			printf("next i : %ld and s[%ld]:%d\n", i, i, s[i]);
+//		if ((int)i < strlen)
+//			printf("next i : %ld and s[%ld]:%d\n", i, i, s[i]);
 	}
 	return (cnt);
 }
@@ -78,7 +78,7 @@ static int		ft_fill(int *int_line, char const *s, int c, char **all, int strlen)
 	i = 0;
 	k = 0;
 	/* 무슨 문장 들어왔나 체크용 */
-	printf("command line : %s\n",s);
+//	printf("command line : %s\n",s);
 	/* 여기까지 */
 	while ((int)i < strlen)
 	{
@@ -128,7 +128,7 @@ void		check_arguments(t_all *a)
 	b = a;
 	while (b)
 	{
-		printf("\n->->-> split start point <-<-<-\n");
+//		printf("\n->->-> split start point <-<-<-\n");
 		b->cmd = NULL; // 초기화를 여기서 하지 않고 init에서 하면 세그폴트가 남 왜??
 		b->arg = split_args(b->int_line_cut, b->line_cut, 2);
 		head = b->redir_list;
@@ -183,16 +183,16 @@ void		check_arguments(t_all *a)
 		}
 		b->redir_list = head;
 		/* 잘 들어갔나 체크용 */
-		printf("********* result *********\n");
-		printf("b->cmd = |%s|\n", b->cmd);
+//		printf("********* result *********\n");
+//		printf("b->cmd = |%s|\n", b->cmd);
 		int k = 0;
 		while (b->arg[k])
 		{
-			printf("arg[%d] %s\n", k, b->arg[k]);
+//			printf("arg[%d] %s\n", k, b->arg[k]);
 			// printf("%d %s\n",b->redir_list->redir_flag, b->redir_list->file);
 			while (b->redir_list)
 			{
-				printf("redir : %d %s\n",b->redir_list->redir_flag, b->redir_list->file);
+//				printf("redir : %d %s\n",b->redir_list->redir_flag, b->redir_list->file);
 				b->redir_list = b->redir_list->next;
 			}
 			k++;
@@ -200,5 +200,5 @@ void		check_arguments(t_all *a)
 		/* 여기까지 지우기 */
 		b = b->next;
 	}
-	printf("\n\n");
+//	printf("\n\n");
 }

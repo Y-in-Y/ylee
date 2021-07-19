@@ -8,7 +8,6 @@ void	builtin_cd(t_all *a)
 
 	if (!a)
 		return ;
-	printf("this cmd is cd\n");
 	pwd = getcwd(NULL, 0);
 	run_export("OLDPWD", pwd);
 	if (!a->arg[1])

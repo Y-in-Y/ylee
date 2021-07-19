@@ -206,7 +206,7 @@ void	parsing(char *line, t_all *a)
 	i = 0;
 	while (i < length)
 		changed[i++] = 1111111;
-	printf("%s\n", line);
+//	printf("%s\n", line);
 	// printf("%d\n", length);
 	struct_init(a);
 	line_to_changed(line, changed, a);
@@ -217,10 +217,10 @@ void	parsing(char *line, t_all *a)
 	{
 		if (changed[i] == 1111111)
 			return ;
-		printf("%d", changed[i]);
+//		printf("%d", changed[i]);
 		i++;
 	}
-	printf("\n");
+//	printf("\n");
 	cutting_int_line(line, changed, a);
 	changed_line_cut(line, changed, a);
 	check_arguments(a);

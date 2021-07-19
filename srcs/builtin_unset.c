@@ -11,7 +11,6 @@ void	builtin_unset(t_all *a)
 
 	if (!a)
 		return ;
-	printf("this cmd is unset\n");
 	name = a->arg[1];
 	tmp = g_env_list;
 	check = ft_strncmp(tmp->name, name, ft_strlen(name));

@@ -61,11 +61,11 @@ void	changed_line_cut(char *line, int *changed, t_all *a)
 			i++;
 			j++;
 		}
-		printf(">>>>>>line in page %s\n>>>>>>int line in page ", b->line_cut);
-		int k = 0;
-		while (k < strlen)
-			printf("%d", b->int_line_cut[k++]);
-		printf("\n");
+//		printf(">>>>>>line in page %s\n>>>>>>int line in page ", b->line_cut);
+//		int k = 0;
+//		while (k < strlen)
+//			printf("%d", b->int_line_cut[k++]);
+//		printf("\n");
 		i++;
 		b = b->next;
 	}
@@ -93,13 +93,13 @@ void	cutting_int_line(char *line, int *changed, t_all *a)
 	b = a;
 	line_dup = ft_strdup(line);
 	strlen = px_strlen(line);
-	printf("%s\n", line);
-	printf("dup %s\n", line_dup);
-	printf("%d\n", strlen);
+//	printf("%s\n", line);
+//	printf("dup %s\n", line_dup);
+//	printf("%d\n", strlen);
 	int i = 0;
-	while (i < strlen)
-		printf("%d", changed[i++]);
-	printf("\n");
+//	while (i < strlen)
+//		printf("%d", changed[i++]);
+//	printf("\n");
 	i = 0;
 	int j = 0;
 	while (i < strlen)
@@ -113,17 +113,17 @@ void	cutting_int_line(char *line, int *changed, t_all *a)
 			j = i + 2;
 			b = b->next;
 		}
-		printf("%d", changed[i]);
+//		printf("%d", changed[i]);
 		i++;
 	}
 	if (b)
 		b->line_cut = ft_strdup(&line_dup[j]);
-	printf("\n\na->line_cut %s\n", a->line_cut);
-	if (a->next)
-		printf("a->next->line_cut %s\n", a->next->line_cut);
-	if (a->next && a->next->next)
-		printf("a->next->line_cut %s\n", a->next->next->line_cut);
-	printf("\n\na->pipe_cnt %d\n", a->pipe_cnt);
+//	printf("\n\na->line_cut %s\n", a->line_cut);
+//	if (a->next)
+//		printf("a->next->line_cut %s\n", a->next->line_cut);
+//	if (a->next && a->next->next)
+//		printf("a->next->line_cut %s\n", a->next->next->line_cut);
+//	printf("\n\na->pipe_cnt %d\n", a->pipe_cnt);
 	free(line_dup);
 }
 

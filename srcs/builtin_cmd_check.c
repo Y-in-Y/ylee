@@ -25,7 +25,7 @@ int	builtin_cmd_check(t_all *a)
 {
 	if (!a)
 		return (0);
-	printf("pipe num is %d and cmd is %s\n", a->pipe_cnt, a->cmd);
+//	printf("pipe num is %d and cmd is %s\n", a->pipe_cnt, a->cmd);
 	if (a->pipe_cnt != 0)
 		return (0);
 	return (check_cmd(a));

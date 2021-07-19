@@ -44,7 +44,6 @@ void	builtin_export(t_all *a)
 
 	if (!a)
 		return ;
-	printf("this cmd is export\n");
 	check = a->arg[1];
 	name = NULL;
 	value = NULL;
