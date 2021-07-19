@@ -68,7 +68,18 @@ void	minishell(void)
 			if (a.pipe_cnt == 0)
 				run_execve_cmd(&a); // no pipe and cmd is not builtin -> use execve to run cmd
 			else
-				multipipe(&a); // when 1 more pipe
+			{
+				pid_t	pid;
+				int		state;
+				pid = fork();
+				if (pid > 0)
+					waitpid(pid, &state, 0);
+				else if (pid == 0)
+				{
+					multipipe(&a); // when 1 more pipe
+					exit(0);
+				}
+			}
 		}
 		printf("builtin_cmd_check : %d\n", check);
 		if (line && line[0])
@@ -76,6 +87,7 @@ void	minishell(void)
 //		printf("this process is %d\n", getpid());
 		free(line);
 		free_struct(&a);
+		printf("\n\nnow new prompt\n\n");
 		line = readline(PROMPT);
 	}
 	if (!line)// press ctrl+D in prompt

@@ -55,7 +55,8 @@ void	child_process(t_all *a, int i, int **fd)
 		j++;
 	}
 	tmp = thispage->redir_list;
-	only_pipe(a, i, fd);
+	if (fd)
+		only_pipe(a, i, fd);
 	while (tmp)
 	{
 		if (tmp->redir_flag == 0)

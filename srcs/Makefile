@@ -4,8 +4,8 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-#RL_FLAG = -I ~/.brew/opt/readline/include
-RL_FLAG = -I /usr/include/readline/include
+RL_FLAG = -I ~/.brew/opt/readline/include
+#RL_FLAG = -I /usr/include/readline/include
 
 FSNTZ = -fsanitize=address
 

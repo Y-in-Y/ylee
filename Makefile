@@ -2,8 +2,8 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-#RL_FLAG = -lreadline -L ~/.brew/opt/readline/lib -I ~/.brew/opt/readline/include
-RL_FLAG = -lreadline -I /usr/include/readline/include
+RL_FLAG = -lreadline -L ~/.brew/opt/readline/lib -I ~/.brew/opt/readline/include
+#RL_FLAG = -lreadline -I /usr/include/readline/include
 
 TC_FLAG = -ltermcap
 
