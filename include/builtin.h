@@ -18,5 +18,6 @@ void	builtin_env(t_all *a);
 void	builtin_exit(t_all *a);
 void	run_export(char *name, char *value);
 void	env_list_to_arr(void);
+char	*find_env_value(char *name);
 
 #endif

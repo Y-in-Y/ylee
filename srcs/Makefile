@@ -30,6 +30,7 @@ SRCS = minishell.c\
 	   builtin_unset.c\
 	   builtin_env.c\
 	   builtin_exit.c\
+	   find_env_value.c\
 	   parsing.c\
 	   parsing_utils.c\
 	   check_args.c\
