@@ -82,7 +82,7 @@ static int		ft_fill(int *int_line, char const *s, int c, char **all, int strlen)
 	/* 여기까지 */
 	while ((int)i < strlen)
 	{
-		while (int_line[i] == c && (int)i < strlen)
+		while ((int)i < strlen && int_line[i] == c)
 			i++;
 		if ((int)i >= strlen)
 			break ;
