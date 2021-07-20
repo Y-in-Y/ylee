@@ -35,6 +35,18 @@ void	run_export(char	*name, char *value)
 	env_list_to_arr();
 }
 
+void	print_only_export(void)
+{
+	t_env	*env;
+
+	env = g_env_list;
+	while (env)
+	{
+		printf("declare -x %s=\"%s\"\n", env->name, env->value);
+		env = env->next;
+	}
+}
+
 void	builtin_export(t_all *a)
 {
 	char	*check;
@@ -44,24 +56,29 @@ void	builtin_export(t_all *a)
 
 	if (!a)
 		return ;
-	check = a->arg[1];
-	name = NULL;
-	value = NULL;
-	if (!check)
-		error_msg("export arg missing");
-	i = 0;
-	while (check[i])
+	if (!a->arg[1])
+		print_only_export();
+	else
 	{
-		if (check[i] == '=')
+		check = a->arg[1];
+		name = NULL;
+		value = NULL;
+		if (!check)
+			error_msg("export arg missing");
+		i = 0;
+		while (check[i])
 		{
-			check[i] = '\0';
-			name = ft_strdup(check);
-			value = ft_strdup(&check[i + 1]);
-			break;
+			if (check[i] == '=')
+			{
+				check[i] = '\0';
+				name = ft_strdup(check);
+				value = ft_strdup(&check[i + 1]);
+				break;
+			}
+			i++;
 		}
-		i++;
+		if (!name || !value)
+			error_msg("export arg missing");
+		run_export(name, value);
 	}
-	if (!name || !value)
-		error_msg("export arg missing");
-	run_export(name, value);
 }
