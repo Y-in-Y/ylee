@@ -22,6 +22,10 @@ SRCS = minishell.c\
 	   env_list_to_arr.c\
 	   ft_strlen.c\
 	   ft_strdup.c\
+       ft_strjoin.c\
+       ft_split.c\
+       ft_calloc.c\
+       ft_strlcpy.c\
 	   builtin_cmd_check.c\
 	   builtin_echo.c\
 	   builtin_cd.c\

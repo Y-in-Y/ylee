@@ -28,5 +28,7 @@ int	builtin_cmd_check(t_all *a)
 //	printf("pipe num is %d and cmd is %s\n", a->pipe_cnt, a->cmd);
 	if (a->pipe_cnt != 0)
 		return (0);
-	return (check_cmd(a));
+    if (a->redir_list && a->redir_list->redir_flag != 0)
+        child_process(a, 0, 0);
+    return (check_cmd(a));
 }
