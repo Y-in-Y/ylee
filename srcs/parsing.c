@@ -224,6 +224,7 @@ void	parsing(char *line, t_all *a)
 	cutting_int_line(line, changed, a);
 	changed_line_cut(line, changed, a);
 	check_arguments(a);
+    is_cmd_echo(a);
 }
 
 /*

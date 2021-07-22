@@ -26,6 +26,7 @@ SRCS = minishell.c\
        ft_split.c\
        ft_calloc.c\
        ft_strlcpy.c\
+       check_cmd_upper.c\
 	   builtin_cmd_check.c\
 	   builtin_echo.c\
 	   builtin_cd.c\

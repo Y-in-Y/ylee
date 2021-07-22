@@ -53,16 +53,20 @@ void	minishell(void)
         {
             //		printf("stdin line is |%s|\n", line);
             parsing(line, &a); // line parsing and add data to a struct
-            //		printf("parsing is end. here is minishell func.\n");
-            //		printf("struct a init?\n");
+            
+/*
+            printf("parsing is end. here is minishell func.\n");
+            printf("struct a init?\n");
             t_all *tmp;
             tmp = &a;
             while (tmp)
             {
-                //			printf("cmd : %s  ", tmp->cmd);
+       			printf("cmd : %s  ", tmp->cmd);
                 tmp = tmp->next;
             }
-            //		printf("\n");
+            printf("\n");
+  */          
+
             int check;
             if ((check = builtin_cmd_check(&a)) == 0) // cmd is builtin cmd : return  1, is not : return 0
             {

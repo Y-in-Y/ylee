@@ -2,6 +2,12 @@
 
 extern t_env	*g_env_list;
 
+void	print_echo(t_all *a, int i, int n_op)
+{
+
+
+}
+
 void	builtin_echo(t_all *a)
 {
 	int		i;
@@ -9,13 +15,13 @@ void	builtin_echo(t_all *a)
 
 	if (!a)
 		return ;
-	n_op = 0;
-	if (ft_strncmp(a->arg[1], "-n", 3) == 1)
-		n_op = 1;
-	i = 1;
-	if (n_op == 1)
-		i = 2;
-	while (a->arg[i])
+	if (a->redir_list && a->redir_list->redir_flag != 0)
+		child_process(a, 0, 0); //need to rename function
+	i = 0;
+    n_op = a->echo_n_cnt;
+	i = n_op + 1;
+	
+    while (a->arg[i])
 	{
 		printf("%s", a->arg[i]);
 		if (a->arg[i + 1])

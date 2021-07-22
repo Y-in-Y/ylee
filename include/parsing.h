@@ -36,6 +36,7 @@ typedef	struct		s_all{
 	int				pipe_cnt;
 	char			*cmd;
 	char			**arg;
+    int             echo_n_cnt;
 	t_list			*redir_list;
 	struct s_all	*next;
 }					t_all;
@@ -48,4 +49,6 @@ void			cutting_int_line(char *line, int *changed, t_all *a);
 void	changed_line_cut(char *line, int *changed, t_all *a);
 t_list	*make_next_flag_list(t_all *a);
 void		check_arguments(t_all *a);
+void        is_cmd_echo(t_all *a);
+
 #endif

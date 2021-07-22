@@ -19,6 +19,7 @@ void	filefd_to_stdout(char *file)
 	fd = open(file, O_CREAT | O_RDWR | O_TRUNC, 0666);
 	if (fd < 0)
 		error_msg("file open error");
+	printf("file %s open by fd %d\n", file, fd);
 	dup2(fd, STDOUT_FD);
 	close(fd);
 }
