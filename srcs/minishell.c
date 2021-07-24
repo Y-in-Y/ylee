@@ -82,7 +82,7 @@ void	minishell(void)
                 if (pid > 0)
                 {
                     waitpid(pid, &state, 0);
-                    printf("pid %d is exit by state %d\n", pid, state);
+//					printf("pid %d is exit by state %d\n", pid, state);
                 }
                 else if (pid == 0)
                 {

@@ -76,6 +76,8 @@ t_all	*make_next_page(void)
 	t_all *a;
 
 	a = (t_all *)malloc(sizeof(t_all));
+	a->pipe_cnt = 0;
+	a->echo_n_cnt = 0;
 	a->redir_list = (t_list *)malloc(sizeof(t_list));
 	a->next = NULL;
 	a->redir_list->next = NULL;

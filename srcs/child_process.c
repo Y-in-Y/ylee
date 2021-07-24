@@ -33,7 +33,7 @@ void    rearrange_arg(t_all *a)
     {
         if (a->arg[i][0] != '\0')
         {
-            printf("a->arg[%d][0] : %c = %d\n", i, a->arg[i][0], a->arg[i][0]);
+//			printf("a->arg[%d][0] : %c = %d\n", i, a->arg[i][0], a->arg[i][0]);
             new[cnt] = ft_strdup(a->arg[i]);
             cnt++;
         }
@@ -47,7 +47,7 @@ void    rearrange_arg(t_all *a)
     i = 0;
     while (a->arg && a->arg[i])
     {
-        printf("new a->arg[%d] : %s\n", i, a->arg[i]);
+//		printf("new a->arg[%d] : %s\n", i, a->arg[i]);
         i++;
     }
 }

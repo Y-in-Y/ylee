@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-int	check_cmd(t_all *a, int cnt)
+int	check_cmd(t_all *a, int cnt, int *new_fd)
 {
 	if (ft_strncmp(a->cmd, "echo", 5) == 1)
 		builtin_echo(a);
@@ -31,7 +31,7 @@ int	check_cmd(t_all *a, int cnt)
     else if (ft_strncmp(a->cmd, "env", 4) == 1)
 		builtin_env(a);
 	else if (ft_strncmp(a->cmd, "exit", 5) == 1)
-		builtin_exit(a);
+		builtin_exit(a, new_fd);
 	else
 		return (0);
 	return (1);

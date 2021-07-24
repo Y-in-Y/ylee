@@ -187,6 +187,7 @@ void	struct_init(t_all *a)
 {
 	a->redir_list = (t_list *)malloc(sizeof(t_list));
 	a->pipe_cnt = 0;
+	a->echo_n_cnt = 0;
 	a->next = NULL;
 	// a->cmd = NULL;
 	// a->redir_list->prev = NULL;
