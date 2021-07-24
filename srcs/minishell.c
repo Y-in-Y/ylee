@@ -68,7 +68,12 @@ void	minishell(void)
   */          
 
             int check;
-            if ((check = builtin_cmd_check(&a)) == 0) // cmd is builtin cmd : return  1, is not : return 0
+			check = check_blt_func(a.cmd);
+			if (check == 1 && a.pipe_cnt != 0)
+				check = 0;
+			if (check == 1)
+				run_blt(&a);
+			else if (check == 0) // cmd is builtin cmd : return  1, is not : return 0
             {
                 //printf("builtin_cmd_check : %d\n", check);
                 pid_t	pid;

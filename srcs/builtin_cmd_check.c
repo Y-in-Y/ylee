@@ -34,13 +34,32 @@ int	check_cmd(t_all *a, int cnt)
 		builtin_exit(a);
 	else
 		return (0);
-	dup2(1, STDOUT_FD);
 	return (1);
 }
 
-int	builtin_cmd_check(t_all *a)
+int	check_blt_func(char *cmd)
+{
+	if (ft_strncmp(cmd, "echo", 5) == 1)
+		return (1);
+	else if (ft_strncmp(cmd, "cd", 3) == 1)
+		return (1);
+	else if (ft_strncmp(cmd, "pwd", 4) == 1)
+		return (1);
+	else if (ft_strncmp(cmd, "export", 7) == 1)
+		return (1);
+	else if (ft_strncmp(cmd, "unset", 6) == 1)
+		return (1);
+	else if (ft_strncmp(cmd, "env", 4) == 1)
+		return (1);
+	else if (ft_strncmp(cmd, "exit", 5) == 1)
+		return (1);
+	return (0);
+}
+
+int	builtin_cmd_check(t_all *a, int is_pipe)
 {
     int     cnt;
+	int		is_blt;
 
 	if (!a)
 		return (0);
@@ -52,5 +71,13 @@ int	builtin_cmd_check(t_all *a)
 		printf("redir_flag : %d\n", a->redir_list->redir_flag);
     cnt = 0;
     check_cmd_upper(a->cmd, &cnt);
-    return (check_cmd(a, cnt));
+	is_blt = check_blt_func(a->cmd);
+	if (is_blt == 0)
+		return (0);
+	if (is_pipe == 0)
+	{
+
+	}
+	//divide check and run func for blt
+	return (check_cmd(a, cnt));
 }

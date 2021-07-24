@@ -12,29 +12,6 @@ void	only_pipe(t_all *a, int i, int **fd)
 		pipefd_to_stdout(fd[i]);
 }
 
-void	redir_in(t_list *tmp)
-{
-	filefd_to_stdin(tmp->file);
-}
-
-void	redir_out(t_list *tmp)
-{
-	filefd_to_stdout(tmp->file);
-}
-
-void	heredoc(t_all *a, int i, int **fd, t_list *tmp)
-{
-	if (!a || i < 0 || !fd || !tmp)
-		exit(0);
-	printf("heredoc func\n");
-	exit(0);
-}
-
-void	out_append(t_list *tmp)
-{
-	final_result_append_to_outfile(tmp->file); //need to rename
-}
-
 void    rearrange_arg(t_all *a)
 {
     int     i;
@@ -79,6 +56,7 @@ void	child_process(t_all *a, int i, int **fd)
 {
 	t_all	*thispage;
 	t_list	*tmp;
+	int		check;
 	int		j;
 
 	j = 0;
@@ -88,30 +66,14 @@ void	child_process(t_all *a, int i, int **fd)
 		thispage = thispage->next;
 		j++;
 	}
+	thispage->pipe_cnt = 1;
 	tmp = thispage->redir_list;
-    if (tmp && tmp->redir_flag != 0)
+	if (tmp && tmp->redir_flag != 0)
         rearrange_arg(thispage);
-	if (fd)
-		only_pipe(a, i, fd);
-	while (tmp)
-	{
-		if (tmp->redir_flag == 0)
-			break ;
-		if (tmp->redir_flag == 1)
-			redir_in(tmp);
-		else if (tmp->redir_flag == 2)
-			redir_out(tmp);
-		else if (tmp->redir_flag == 3)
-			heredoc(a, i, fd, tmp);
-		else if (tmp->redir_flag == 4)
-			out_append(tmp);
-		else
-			error_msg("redir error");
-		tmp = tmp->next;
-	}
-    if (fd)
-    {
-	    thispage->pipe_cnt = 0;
-	    run_cmd(thispage);
-    }
+	only_pipe(a, i, fd);
+	check = check_blt_func(thispage->cmd);
+	if (check == 1)
+		run_blt(thispage);
+	else if (check == 0)
+		run_execve_cmd(thispage);
 }

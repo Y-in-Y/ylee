@@ -8,7 +8,10 @@ typedef struct		s_env	t_env;
 typedef struct		s_list	t_list;
 typedef	struct		s_all	t_all;
 
-int		builtin_cmd_check(t_all *a);
+int		check_blt_func(char *cmd);
+int		check_cmd(t_all *a, int cnt);
+void	run_blt(t_all *a);
+//int		builtin_cmd_check(t_all *a);
 void	builtin_echo(t_all *a);
 void	builtin_cd(t_all *a);
 void	builtin_pwd(t_all *a);

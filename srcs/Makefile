@@ -26,8 +26,9 @@ SRCS = minishell.c\
        ft_split.c\
        ft_calloc.c\
        ft_strlcpy.c\
-       check_cmd_upper.c\
-	   builtin_cmd_check.c\
+       redir_connect.c\
+	   check_cmd_upper.c\
+	   check_blt_func.c\
 	   builtin_echo.c\
 	   builtin_cd.c\
 	   builtin_pwd.c\
@@ -48,8 +49,11 @@ SRCS = minishell.c\
 	   filefd_to_stdout.c\
 	   run_here_document.c\
 	   final_result_append_to_outfile.c\
-	   run_cmd.c\
+	   check_cmd.c\
+	   run_blt.c\
 	   run_execve_cmd.c\
+#	   run_cmd.c\
+#	   builtin_cmd_check.c\
 #	   parsing_utils.c\
 
 OBJS = $(SRCS:.c=.o)

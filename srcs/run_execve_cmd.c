@@ -33,7 +33,7 @@ void	run_execve_cmd(t_all *a)
 
 	dir = path_dir();
 	if (a->redir_list && a->redir_list->redir_flag != 0)
-		child_process(a, 0, 0);
+		redir_connect(a->redir_list);
 	while (dir && *dir)
 	{
 		printf("dir : %s  ", *dir);

@@ -11,6 +11,7 @@ int	check_exit(char *line);
 char	*check_cmd_upper(char *cmd, int *cnt);
 void	move_cursor(int *row, int *col);
 void	run_execve_cmd(t_all *a);
+void	redir_connect(t_list *list);
 
 int	ft_strncmp(char *dst, char *src, int size);
 int	ft_strlen(char *str);
