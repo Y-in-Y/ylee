@@ -39,18 +39,18 @@ void	run_execve_cmd(t_all *a)
 	}
 	while (dir && *dir)
 	{
-		printf("dir : %s  ", *dir);
+//		printf("dir : %s  ", *dir);
 		tmp = ft_strjoin(*dir, "/");
 		cmd = ft_strjoin(tmp, a->cmd);
 		free(tmp);
-		printf("join cmd : %s\n", cmd);
-		int i;
-		i = 0;
-		while (a->arg[i])
-		{
-			printf("arg[%d] : %s\n", i, a->arg[i]);
-			i++;
-		}
+//		printf("join cmd : %s\n", cmd);
+//		int i;
+//		i = 0;
+//		while (a->arg[i])
+//		{
+//			printf("arg[%d] : %s\n", i, a->arg[i]);
+//			i++;
+//		}
 		execve(cmd, a->arg, g_env_list->origin);
 		free(cmd);
 		dir++;
