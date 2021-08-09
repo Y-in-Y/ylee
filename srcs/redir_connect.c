@@ -14,10 +14,26 @@ void	redir_out(t_list *tmp)
 
 void	heredoc(t_list *tmp)
 {
-	if (!tmp)
-		exit(0);
-	printf("heredoc func\n");
-	exit(0);
+	int		p_fd[2];
+	char	*line;
+
+	pipe(p_fd);
+	while (1)
+	{
+		line = readline("> ");
+		if (line)
+		{
+			printf("heredoc line : |%s|\n", line);
+			if (ft_strncmp(line, tmp->file, ft_strlen(line)) == 1)
+				break ;
+			write(p_fd[1], line, ft_strlen(line));
+			write(p_fd[1], "\n", 1);
+			free(line);
+		}
+	}
+	close(p_fd[1]);
+	dup2(p_fd[0], 0);
+	close(p_fd[0]);
 }
 
 void	out_append(t_list *tmp)
